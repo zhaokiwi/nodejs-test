@@ -22,22 +22,23 @@ var server = http.createServer(function(request, response){
   console.log('有个傻子发请求过来啦！路径（带查询参数）为：' + pathWithQuery)
 
   if(path === '/'){
-    response.statusCode = 200
-    response.setHeader('Content-Type', 'text/html;charset=utf-8')
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/html;charset=utf-8');
     response.write(`
-    <!DOCTYPE html>
-    <h1>这是一个h1标签</h1>`)
-    response.end()
-  } else if(path === '/x'){
-    response.statusCode = 200
-    response.setHeader('Content-Type', 'text/css;charset=utf-8')
-    response.write(`body{color: red;}`)
-    response.end()
+    <link rel="stylesheet" href="./style.css">
+    <h1>这是一个h1标签</h1>
+    `);
+    response.end();
+  } else if(path === '/style.css'){
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/css;charset=utf-8');
+    response.write(`h1{color: red;}`);
+    response.end();
   } else {
-    response.statusCode = 404
-    response.setHeader('Content-Type', 'text/html;charset=utf-8')
-    response.write(`你访问的页面不存在`)
-    response.end()
+    response.statusCode = 404;
+    response.setHeader('Content-Type', 'text/html;charset=utf-8');
+    response.write(`你访问的页面不存在`);
+    response.end();
   }
 
   /******** 代码结束，下面不要看 ************/
